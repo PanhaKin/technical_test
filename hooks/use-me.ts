@@ -1,6 +1,19 @@
 import api from "@/lib/axios";
-import { useAuthStore, User } from "@/store/auth-store";
+import { useAuthStore } from "@/store/auth-store";
 import useSWR from "swr";
+
+type User = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  gender: string;
+  countryCode: string;
+  nationalityId: string;
+  avatar: string;
+  birthday: string | null;
+};
 
 const fetcher = (url: string) => api.get(url).then((r) => r.data.data);
 

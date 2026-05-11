@@ -1,18 +1,7 @@
 import * as SecureStore from "expo-secure-store";
 import { create } from "zustand";
 
-export type User = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  gender: string;
-  countryCode: string;
-  nationalityId: string;
-  avatar: string;
-  birthday: string | null;
-};
+
 
 type Token = {
   token_type: string;
@@ -22,12 +11,10 @@ type Token = {
 };
 
 type AuthState = {
-  user: User | null;
   token: Token | null;
-  isReady: boolean; // 👈 add this
+  isReady: boolean;
   isLoading: boolean;
   error: string | null;
-  setUser: (user: User | null) => void;
   setToken: (token: Token | null) => void;
   setLoading: (val: boolean) => void;
   setError: (msg: string | null) => void;
@@ -36,13 +23,10 @@ type AuthState = {
 };
 
 export const useAuthStore = create<AuthState>((set) => ({
-  user: null,
   token: null,
-  isReady: false, // 👈
+  isReady: false,
   isLoading: false,
   error: null,
-
-  setUser: (user) => set({ user }),
 
   setToken: async (token) => {
     if (token) {
@@ -58,7 +42,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   logout: async () => {
     await SecureStore.deleteItemAsync("auth_token");
-    set({ user: null, token: null, error: null });
+    set({ token: null, error: null });
   },
 
   loadToken: async () => {
@@ -66,6 +50,6 @@ export const useAuthStore = create<AuthState>((set) => ({
     if (raw) {
       set({ token: JSON.parse(raw) });
     }
-    set({ isReady: true }); 
+    set({ isReady: true });
   },
 }));

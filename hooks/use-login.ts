@@ -1,5 +1,5 @@
 import api from "@/lib/axios";
-import { useAuthStore, User } from "@/store/auth-store";
+import { useAuthStore } from "@/store/auth-store";
 import { router } from "expo-router";
 
 type LoginPayload = {
@@ -14,7 +14,6 @@ type LoginResponse = {
   access_token: string;
   accessToken: string;
   refreshToken: string;
-  user: User;
 };
 
 type ApiResponse<T> = {
@@ -24,8 +23,7 @@ type ApiResponse<T> = {
 };
 
 export function useLogin() {
-  const { setToken, setUser, setLoading, setError, isLoading, error } =
-    useAuthStore();
+  const { setToken, setLoading, setError, isLoading, error } = useAuthStore();
 
   const login = async (payload: LoginPayload) => {
     setLoading(true);
@@ -36,10 +34,8 @@ export function useLogin() {
         payload,
       );
 
-      const { accessToken, access_token, refreshToken, token_type, user } =
-        res.data;
+      const { accessToken, access_token, refreshToken, token_type } = res.data;
 
-      setUser(user);
       setToken({ accessToken, access_token, refreshToken, token_type });
       router.replace("/users/me");
     } catch (err: any) {

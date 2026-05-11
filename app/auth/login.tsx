@@ -214,29 +214,35 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 4,
   },
+  
   tabButton: {
     flex: 1,
     paddingVertical: 12,
     alignItems: "center",
     borderRadius: 10,
   },
+
   activeTab: {
     backgroundColor: "#0a7ea4",
   },
+
   activeText: {
     color: "white",
     fontWeight: "bold",
   },
+  
   flagPrefix: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
   },
+
   flagImage: {
     width: 24,
     height: 16,
     borderRadius: 2,
   },
+
   button: {
     flexDirection: "row",
     gap: 8,
@@ -246,6 +252,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
   },
+
   buttonTextForgotPassword: {
     flexDirection: "column",
     alignSelf: "center",
@@ -253,17 +260,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "semibold",
   },
+
   buttonText: {
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
   },
+  
   buttonIcon: {
     color: "white",
     fontSize: 18,
     fontWeight: "bold",
     marginTop: 2,
   },
+
   errorText: {
     color: "#e53e3e",
     fontSize: 14,
