@@ -1,8 +1,6 @@
 import * as SecureStore from "expo-secure-store";
 import { create } from "zustand";
 
-
-
 type Token = {
   token_type: string;
   access_token: string;
