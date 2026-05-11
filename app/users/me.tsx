@@ -82,17 +82,18 @@ export default function MeScreen() {
       </View>
       <View style={styles.card}>
         {menuItems.map((item, index) => (
-          <View key={item.label}>
+          <View key={index}>
             <TouchableOpacity style={styles.menuItem}>
               <View style={styles.menuIcon}>
                 <Ionicons name={item.icon} size={18} color="#0a7ea4" />
               </View>
               <View style={styles.menuContent}>
                 <ThemedText style={styles.menuLabel}>{item.label}</ThemedText>
-                <ThemedText style={styles.menuValue}>{item.value}</ThemedText>
+                <ThemedText style={styles.menuValue} numberOfLines={1}>
+                  {item.value}
+                </ThemedText>
               </View>
             </TouchableOpacity>
-            {index < menuItems.length - 1 && <View style={styles.divider} />}
           </View>
         ))}
       </View>
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
 
   header: {
     alignItems: "center",
-    paddingBottom: 28,
+    paddingBottom: 8,
     gap: 8,
   },
 
@@ -168,7 +169,8 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    marginHorizontal: 16,
+    flex: 1,
+    marginHorizontal: 8,
     backgroundColor: "#fff",
     borderRadius: 16,
     paddingHorizontal: 16,
@@ -182,7 +184,7 @@ const styles = StyleSheet.create({
   menuItem: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: 14,
+    paddingVertical: 8,
     gap: 12,
   },
 
@@ -197,7 +199,6 @@ const styles = StyleSheet.create({
 
   menuContent: {
     flex: 1,
-    gap: 2,
   },
 
   menuLabel: {
@@ -208,12 +209,6 @@ const styles = StyleSheet.create({
   menuValue: {
     fontSize: 15,
     fontWeight: "500",
-  },
-
-  divider: {
-    height: 1,
-    backgroundColor: "#f2f2f2",
-    marginLeft: 48,
   },
 
   logoutButton: {
